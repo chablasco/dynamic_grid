@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Grid</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    let x = 0;
+    let y = 0;
+
+    let spacing = 50;
+
+    function setup() {
+      createCanvas(windowWidth, windowHeight); // Fullscreen canvas
+    }
+
+    function draw() {
+      background(0); // Set the background color to black
+
+      // Adjust spacing dynamically
+      spacing += random(-2, 2);
+
+      stroke(255); // Set line color to white
+      strokeWeight(2);
+
+      // Draw vertical lines
+      x = 0;
+      while (x < width) {
+        line(x, 0, x, height);
+        x += spacing;
+      }
+
+      // Draw horizontal lines
+      y = 0;
+      while (y < height) {
+        line(0, y, width, y);
+        y += spacing;
+      }
+    }
+
+    function windowResized() {
+      resizeCanvas(windowWidth, windowHeight); // Adjust canvas size dynamically
+    }
+  </script>
+</body>
+</html>
